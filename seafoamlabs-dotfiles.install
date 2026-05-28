@@ -1,17 +1,25 @@
 post_install() {
     COLORSCHEMES_SRC="/usr/share/seafoamlabs-dotfiles/colorschemes"
+    THEMES_SRC="/usr/share/seafoamlabs-dotfiles/themes"
 
     for user_home in /home/*; do
         username=$(basename "$user_home")
-        dest="$user_home/.config/noctalia/colorschemes"
-
+        
+        # Colorschemes
+        dest_colors="$user_home/.config/noctalia/colorschemes"
         install -Dm644 -o "$username" \
             "$COLORSCHEMES_SRC/SeafoamLabs/SeafoamLabs.json" \
-            "$dest/SeafoamLabs/SeafoamLabs.json"
+            "$dest_colors/SeafoamLabs/SeafoamLabs.json"
 
         install -Dm644 -o "$username" \
             "$COLORSCHEMES_SRC/SeafoamLabs AMOLED/SeafoamLabs AMOLED.json" \
-            "$dest/SeafoamLabs AMOLED/SeafoamLabs AMOLED.json"
+            "$dest_colors/SeafoamLabs AMOLED/SeafoamLabs AMOLED.json"
+
+        # GTK Themes
+        dest_themes="$user_home/.local/share/themes"
+        mkdir -p "$dest_themes"
+        cp -r "$THEMES_SRC"/* "$dest_themes/"
+        chown -R "$username" "$dest_themes/SeafoamLabs" "$dest_themes/SeafoamLabs-AMOLED"
     done
 }
 

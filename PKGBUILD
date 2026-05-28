@@ -3,7 +3,7 @@
 pkgname=seafoamlabs-dotfiles
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Seafoam Labs Noctalia colorschemes (SeafoamLabs & SeafoamLabs AMOLED)"
+pkgdesc="Seafoam Labs Noctalia colorschemes and GTK themes"
 arch=('any')
 url="https://github.com/Seafoam-Labs/SeafoamLabsDotFiles"
 license=('MIT')
@@ -22,4 +22,8 @@ package() {
     install -Dm644 \
         ".config/noctalia/colorschemes/SeafoamLabs AMOLED/SeafoamLabs AMOLED.json" \
         "$pkgdir/usr/share/seafoamlabs-dotfiles/colorschemes/SeafoamLabs AMOLED/SeafoamLabs AMOLED.json"
+
+    mkdir -p "$pkgdir/usr/share/seafoamlabs-dotfiles/themes"
+    cp -r .local/share/themes/SeafoamLabs "$pkgdir/usr/share/seafoamlabs-dotfiles/themes/"
+    cp -r .local/share/themes/SeafoamLabs-AMOLED "$pkgdir/usr/share/seafoamlabs-dotfiles/themes/"
 }
