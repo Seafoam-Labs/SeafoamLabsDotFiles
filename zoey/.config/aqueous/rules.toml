@@ -1,0 +1,48 @@
+# =============================================================================================
+# Rules for games or other windows to take layout priority
+# =============================================================================================
+
+
+# ---------------------------------------------------------------------------------------------
+# Dota 2
+# ---------------------------------------------------------------------------------------------
+
+[game_mode]
+remainder_layout = "grid"
+gaps_inner       = 8
+fallback_layout  = "grid"
+
+[[window]]
+app_id     = "dota2"
+layout     = "game-mode"
+anchor     = "center"
+size       = "3840x2160"
+scale      = 1.0
+#tag        = 1
+fullscreen = false
+ignore_struts = true
+
+[[window]]
+app_id = "steam_app_2694490"
+layout = "game-mode"
+anchor="center"
+size = "3840x2160"
+scale = 1.0
+fullscreen = false
+ignore_struts = true
+
+# 2) Some builds report the Source 2 engine name
+#[[window]]
+#app_id     = "steam_app_570"
+#layout     = "game-mode"
+#anchor     = "center"
+#size       = "native"
+#tag        = 1
+
+# 3) XWayland fallback (class = WM_CLASS)
+#[[window]]
+#class      = "steam_app_570"
+#layout     = "game-mode"
+#anchor     = "center"
+#size       = "native"
+#tag        = 1

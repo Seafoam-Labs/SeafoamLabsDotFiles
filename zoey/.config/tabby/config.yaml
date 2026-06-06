@@ -1,0 +1,402 @@
+version: 8
+profiles:
+  - icon: fas fa-desktop
+    options:
+      host: 192.168.1.226
+      user: agent
+      algorithms:
+        hmac:
+          - hmac-sha1
+          - hmac-sha1-etm@openssh.com
+          - hmac-sha2-256
+          - hmac-sha2-256-etm@openssh.com
+          - hmac-sha2-512
+          - hmac-sha2-512-etm@openssh.com
+        kex:
+          - curve25519-sha256
+          - curve25519-sha256@libssh.org
+          - diffie-hellman-group14-sha256
+          - diffie-hellman-group16-sha512
+          - ext-info-c
+          - ext-info-s
+          - kex-strict-c-v00@openssh.com
+          - kex-strict-s-v00@openssh.com
+          - mlkem768x25519-sha256
+        cipher:
+          - aes128-ctr
+          - aes192-ctr
+          - aes256-ctr
+          - aes256-gcm@openssh.com
+          - chacha20-poly1305@openssh.com
+        serverHostKey:
+          - ecdsa-sha2-nistp256
+          - ecdsa-sha2-nistp521
+          - rsa-sha2-256
+          - rsa-sha2-512
+          - ssh-ed25519
+          - ssh-rsa
+        compression:
+          - none
+      input: {}
+      privateKeys: []
+      forwardedPorts: []
+      scripts: []
+    weight: -1
+    name: Build Agent
+    type: ssh
+    id: ssh:custom:Build-Agent:70abd4a7-4c28-461d-abba-b183bd50072d
+  - icon: fas fa-desktop
+    options:
+      host: 192.168.1.235
+      user: llm
+      algorithms:
+        hmac:
+          - hmac-sha1
+          - hmac-sha1-etm@openssh.com
+          - hmac-sha2-256
+          - hmac-sha2-256-etm@openssh.com
+          - hmac-sha2-512
+          - hmac-sha2-512-etm@openssh.com
+        kex:
+          - curve25519-sha256
+          - curve25519-sha256@libssh.org
+          - diffie-hellman-group14-sha256
+          - diffie-hellman-group16-sha512
+          - ext-info-c
+          - ext-info-s
+          - kex-strict-c-v00@openssh.com
+          - kex-strict-s-v00@openssh.com
+          - mlkem768x25519-sha256
+        cipher:
+          - aes128-ctr
+          - aes192-ctr
+          - aes256-ctr
+          - aes256-gcm@openssh.com
+          - chacha20-poly1305@openssh.com
+        serverHostKey:
+          - ecdsa-sha2-nistp256
+          - ecdsa-sha2-nistp521
+          - rsa-sha2-256
+          - rsa-sha2-512
+          - ssh-ed25519
+          - ssh-rsa
+        compression:
+          - none
+      input: {}
+      privateKeys: []
+      forwardedPorts: []
+      scripts: []
+    weight: -1
+    name: LLM Machine
+    type: ssh
+    id: ssh:custom:LLM-Machine:0e1a9cf1-4b12-4587-b44b-097717d3452e
+  - name: AI Art
+    icon: fas fa-desktop
+    options:
+      host: 192.168.1.236
+      user: art
+      algorithms: {}
+      input: {}
+      privateKeys: []
+    weight: -1
+    type: ssh
+    id: ssh:custom:AI-Art:a0b22a5c-1192-4c46-892a-c899d4d81794
+groups: []
+configSync:
+  parts: {}
+hotkeys:
+  toggle-window:
+    - Ctrl-Space
+  copy-current-path: []
+  ctrl-c:
+    - Ctrl-C
+  copy:
+    - Ctrl-Shift-C
+  paste:
+    - Ctrl-Shift-V
+    - Shift-Insert
+  select-all:
+    - Ctrl-Shift-A
+  clear: []
+  zoom-in:
+    - Ctrl-=
+    - Ctrl-Shift-=
+  zoom-out:
+    - Ctrl--
+    - Ctrl-Shift--
+  reset-zoom:
+    - Ctrl-0
+  home:
+    - Home
+  end:
+    - End
+  previous-word:
+    - Ctrl-Left
+  next-word:
+    - Ctrl-Right
+  delete-previous-word:
+    - Ctrl-Backspace
+  delete-line:
+    - Ctrl-Shift-Backspace
+  delete-next-word:
+    - Ctrl-Delete
+  search:
+    - Ctrl-Shift-F
+  pane-focus-all:
+    - Ctrl-Shift-I
+  focus-all-tabs:
+    - Ctrl-Alt-Shift-I
+  scroll-to-top:
+    - Ctrl-PageUp
+  scroll-page-up:
+    - Alt-PageUp
+  scroll-up:
+    - Ctrl-Shift-Up
+  scroll-down:
+    - Ctrl-Shift-Down
+  scroll-page-down:
+    - Alt-PageDown
+  scroll-to-bottom:
+    - Ctrl-PageDown
+  restart-telnet-session: []
+  restart-ssh-session: []
+  launch-winscp: []
+  open-sftp: []
+  settings-tab: {}
+  settings:
+    - Ctrl-,
+  serial:
+    - Alt-K
+  restart-serial-session: []
+  new-tab:
+    - Ctrl-Shift-T
+  new-window:
+    - Ctrl-Shift-N
+  profile: {}
+  profile-selectors: {}
+  group-selectors: {}
+  toggle-fullscreen:
+    - F11
+  close-tab:
+    - Ctrl-Shift-W
+  reopen-tab:
+    - Ctrl-Shift-Z
+  toggle-last-tab: []
+  rename-tab:
+    - Ctrl-Shift-R
+  next-tab:
+    - Ctrl-Shift-Right
+    - Ctrl-Tab
+  previous-tab:
+    - Ctrl-Shift-Left
+    - Ctrl-Shift-Tab
+  move-tab-left:
+    - Ctrl-Shift-PageUp
+  move-tab-right:
+    - Ctrl-Shift-PageDown
+  rearrange-panes:
+    - Ctrl-Shift
+  duplicate-tab: []
+  restart-tab: []
+  reconnect-tab: []
+  disconnect-tab: []
+  explode-tab:
+    - Ctrl-Shift-.
+  combine-tabs:
+    - Ctrl-Shift-,
+  tab-1:
+    - Alt-1
+  tab-2:
+    - Alt-2
+  tab-3:
+    - Alt-3
+  tab-4:
+    - Alt-4
+  tab-5:
+    - Alt-5
+  tab-6:
+    - Alt-6
+  tab-7:
+    - Alt-7
+  tab-8:
+    - Alt-8
+  tab-9:
+    - Alt-9
+  tab-10:
+    - Alt-0
+  tab-11: []
+  tab-12: []
+  tab-13: []
+  tab-14: []
+  tab-15: []
+  tab-16: []
+  tab-17: []
+  tab-18: []
+  tab-19: []
+  tab-20: []
+  split-right:
+    - Ctrl-Shift-S
+  split-bottom:
+    - Ctrl-Shift-D
+  split-left: []
+  split-top: []
+  pane-nav-right:
+    - Ctrl-Alt-Right
+  pane-nav-down:
+    - Ctrl-Alt-Down
+  pane-nav-up:
+    - Ctrl-Alt-Up
+  pane-nav-left:
+    - Ctrl-Alt-Left
+  pane-nav-previous:
+    - Ctrl-Alt-[
+  pane-nav-next:
+    - Ctrl-Alt-]
+  pane-nav-1: []
+  pane-nav-2: []
+  pane-nav-3: []
+  pane-nav-4: []
+  pane-nav-5: []
+  pane-nav-6: []
+  pane-nav-7: []
+  pane-nav-8: []
+  pane-nav-9: []
+  pane-maximize:
+    - Ctrl-Alt-Enter
+  pane-increase-vertical: []
+  pane-decrease-vertical: []
+  pane-increase-horizontal: []
+  pane-decrease-horizontal: []
+  close-pane: []
+  switch-profile:
+    - Ctrl-Alt-T
+  profile-selector:
+    - Ctrl-Shift-E
+  command-selector:
+    - Ctrl-Shift-P
+terminal:
+  searchOptions: {}
+  colorScheme:
+    name: Seafoam Labs
+    foreground: '#F5F5F5'
+    background: '#111827'
+    selection: null
+    cursor: '#2DD4A8'
+    cursorAccent: null
+    colors:
+      - '#000000'
+      - '#FB7185'
+      - '#2DD4A8'
+      - '#FACC15'
+      - '#60A5FA'
+      - '#C084FC'
+      - '#22D3EE'
+      - '#A1A1AA'
+      - '#1F1F1F'
+      - '#F87171'
+      - '#5EEAD4'
+      - '#FDE047'
+      - '#93C5FD'
+      - '#E879F9'
+      - '#67E8F9'
+      - '#FFFFFF'
+  font: MonoLisa script
+  customColorSchemes:
+    - name: Catppuccin Mocha
+      foreground: '#cdd6f4'
+      background: '#1e1e2e'
+      selection: null
+      cursor: '#f5e0dc'
+      cursorAccent: null
+      colors:
+        - '#45475a'
+        - '#f38ba8'
+        - '#a6e3a1'
+        - '#f9e2af'
+        - '#89b4fa'
+        - '#f5c2e7'
+        - '#94e2d5'
+        - '#bac2de'
+        - '#585b70'
+        - '#f38ba8'
+        - '#a6e3a1'
+        - '#f9e2af'
+        - '#89b4fa'
+        - '#f5c2e7'
+        - '#94e2d5'
+        - '#a6adc8'
+    - name: Seafoam Labs
+      foreground: '#F5F5F5'
+      background: '#111827'
+      selection: null
+      cursor: '#2DD4A8'
+      cursorAccent: null
+      colors:
+        - '#000000'
+        - '#FB7185'
+        - '#2DD4A8'
+        - '#FACC15'
+        - '#60A5FA'
+        - '#C084FC'
+        - '#22D3EE'
+        - '#A1A1AA'
+        - '#1F1F1F'
+        - '#F87171'
+        - '#5EEAD4'
+        - '#FDE047'
+        - '#93C5FD'
+        - '#E879F9'
+        - '#67E8F9'
+        - '#FFFFFF'
+  ligatures: true
+  lightColorScheme:
+    name: Tabby Default Light
+    foreground: '#4d4d4c'
+    background: '#ffffff'
+    cursor: '#4d4d4c'
+    colors:
+      - '#000000'
+      - '#c82829'
+      - '#718c00'
+      - '#eab700'
+      - '#4271ae'
+      - '#8959a8'
+      - '#3e999f'
+      - '#ffffff'
+      - '#000000'
+      - '#c82829'
+      - '#718c00'
+      - '#eab700'
+      - '#4271ae'
+      - '#8959a8'
+      - '#3e999f'
+      - '#ffffff'
+ssh:
+  knownHosts:
+    - host: 192.168.1.226
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: 40IdZiVGXvT4JWJgMindx4AQS1O8IqrGVgzcqQqS1/4=
+    - host: 192.168.1.235
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: v5gSqiSPbOt+T+PLhfvoJyGGk0kC7/PLYHvo2EyILVE=
+    - host: 192.168.1.236
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: Wf55Cs6cClXnhbp88lG2szzBO/FHVr0KZ9i9nP3kAhE=
+clickableLinks: {}
+accessibility: {}
+appearance:
+  frame: native
+hacks: {}
+providerBlacklist: []
+commandBlacklist: []
+profileBlacklist: []
+enableWelcomeTab: false
+pluginBlacklist: []
+profileDefaults:
+  ssh:
+    disableDynamicTitle: true
+    type: ssh
+enableAnalytics: false

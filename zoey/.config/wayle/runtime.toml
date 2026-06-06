@@ -1,0 +1,67 @@
+[general]
+font-sans = "MonoLisa script"
+font-mono = "MonoLisa script"
+
+[bar]
+scale = 0.75
+bg = "transparent"
+
+[[bar.layout]]
+monitor = "*"
+show = true
+left = [
+    "media",
+    "world-clock",
+    "weather",
+    "clock",
+    { name = "System", modules = [
+    "cpu",
+    "ram",
+    "netstat",
+    "storage",
+] },
+]
+center = ["cava"]
+right = [
+    "systray",
+    "bluetooth",
+    "network",
+    "microphone",
+    "volume",
+    "power",
+]
+
+[styling]
+rounding = "md"
+
+[styling.palette]
+bg = "#000000"
+surface = "#000000"
+elevated = "#111827"
+fg = "#9ca3af"
+fg-muted = "#9ca3af"
+primary = "#8b68cf"
+red = "#f472b6"
+yellow = "#facc15"
+green = "#2dd4a8"
+blue = "#7ecae5"
+
+[modules.battery]
+icon-show = false
+label-show = false
+
+[modules.power]
+right-click = "systemctl poweroff"
+middle-click = "systemctl reboot"
+
+[modules.weather]
+units = "imperial"
+format = "{{ temp }}{{ temp_unit }} {{ condition }}"
+
+[wallpaper]
+cycling-same-image = true
+
+[[wallpaper.monitors]]
+name = ""
+fit-mode = "fill"
+wallpaper = "/home/zoey/Pictures/aishot-4455.jpg"

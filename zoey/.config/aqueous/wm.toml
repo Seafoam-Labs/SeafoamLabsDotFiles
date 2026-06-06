@@ -1,0 +1,283 @@
+# =============================================================================
+# Aqueous WM
+# Path: ~/.config/aqueous/wm.toml
+# Parser is a tiny TOML subset: [section], [[output]], key = value, # comments.
+# Unknown keys are ignored; a malformed file falls back to defaults silently.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# Per-output overrides. Repeat the [[output]] block once per monitor.
+# `name` matches river_output_v1.name (e.g. "DP-1", "HDMI-A-1", "eDP-1").
+# -----------------------------------------------------------------------------
+[[output]]
+name   = "DP-4"
+mode   = "7680x2160@240.000000"
+scale  = 1.0
+position = [0,0]
+enabled = true
+
+[display]
+apply_on_start  = true
+apply_on_reload = true
+#
+#[[output]]
+#name   = "HDMI-A-1"
+#layout = "tile"
+#
+#[[output]]
+#name   = "eDP-1"
+#layout = "monocle"
+[struts]
+top    = 32   # Noctalia bar height; adjust to match your bar
+bottom = 0
+left   = 0
+right  = 0
+
+
+# -----------------------------------------------------------------------------
+# Actions definitions.
+# This is where you set actions that are attached to a keybind
+# -----------------------------------------------------------------------------
+[actions]
+toggle_start_menu = "sherlock"
+spawn_terminal = "tabby"
+lock_screen = "qs -c noctalia-shell ipc call lockScreen lock"
+
+# -----------------------------------------------------------------------------
+# Keybindings.
+#
+# Each built-in action maps to either:
+#   - a single chord string:   action = "Super+H"
+#   - a list of chords:        action = ["Super+H", "Alt+Left"]
+#   - an empty list to unbind: action = []
+#
+# Chord grammar: tokens joined by '+', case-insensitive.
+#   Modifiers: Super (Mod4) | Ctrl | Alt (Mod1) | Shift
+#   Keys:      single letters (A–Z), digits (0–9), F1–F24,
+#              named keys (Return, Space, Tab, Comma, Period, Escape,
+#              Left, Right, Up, Down, Home, End, PageUp, PageDown, ...)
+#
+# Omit any line to keep the compiled-in default (shown in the comment).
+# -----------------------------------------------------------------------------
+[keybinds]
+# --- Window / session ---
+toggle_start_menu     = "Super+Space"      # default
+spawn_terminal        = "Super+Return"     # default
+close_focused         = "Super+Q"          # default
+cycle_focus           = "Super+Tab"        # default
+
+# --- Directional focus (works in tile/grid; scrolling = prev/next column) ---
+focus_left            = "Super+H"          # default
+focus_right           = "Super+L"          # default
+focus_up              = "Super+K"          # default
+focus_down            = "Super+J"          # default
+
+# --- Scrolling-layout viewport pan + column move ---
+scroll_viewport_left  = "Super+Comma"      # default
+scroll_viewport_right = "Super+Period"     # default
+move_column_left      = "Super+Shift+H"    # default
+move_column_right     = "Super+Shift+L"    # default
+
+# --- Opt-in actions (no default chord) ---
+reload_config         = "Super+R"          # re-read this file (layout opts hot-swap;
+                                           # chord changes still need WM restart)
+
+
+# Per-engine semantics:
+#   tile/grid/dwindle → swap with neighbour at (row±1, col)/(row, col±1)
+#   scrolling         → swap columns (L/R) or intra-column reorder (U/D)
+#   monocle           → reorder in z-stack
+#   game-mode         → reorder within the non-anchor band (anchor immovable;
+#                       use rules.toml to change which window is the anchor)
+#   float             → no-op (use rules.toml / future nudge_floating_*)
+move_window_left      = "Super+Shift+Left"   # default
+move_window_right     = "Super+Shift+Right"  # default
+move_window_up        = "Super+Shift+Up"     # default
+move_window_down      = "Super+Shift+Down"   # default
+
+
+# Layout-switch sugar: resolves through [layout.slots] above.
+set_layout_primary    = "Super+T"          # → tile
+set_layout_secondary  = "Super+F"          # → scrolling
+set_layout_tertiary   = "Super+M"          # → monocle
+set_layout_quaternary = "Super+G"          # → grid
+
+# --- Tags / workspaces (Phase B1c) ---
+# Tags are a per-output 32-bit bitmask. A window is visible on its output iff
+# (window.tags & output.visible_tags) != 0. Bits 1..9 map to digits 1..9;
+# the "all" actions use the full mask 0xFFFFFFFF (sticky / show-everything).
+#
+# View: switch the focused output's visible tagset to exactly this tag.
+view_tag_1            = "Super+1"          # default
+view_tag_2            = "Super+2"          # default
+view_tag_3            = "Super+3"          # default
+view_tag_4            = "Super+4"          # default
+view_tag_5            = "Super+5"          # default
+view_tag_6            = "Super+6"          # default
+view_tag_7            = "Super+7"          # default
+view_tag_8            = "Super+8"          # default
+view_tag_9            = "Super+9"          # default
+view_tag_all          = "Super+0"          # default — show every tag
+
+# Send: reassign the focused window to exactly this tag (moves it).
+send_tag_1            = "Super+Shift+1"    # default
+send_tag_2            = "Super+Shift+2"    # default
+send_tag_3            = "Super+Shift+3"    # default
+send_tag_4            = "Super+Shift+4"    # default
+send_tag_5            = "Super+Shift+5"    # default
+send_tag_6            = "Super+Shift+6"    # default
+send_tag_7            = "Super+Shift+7"    # default
+send_tag_8            = "Super+Shift+8"    # default
+send_tag_9            = "Super+Shift+9"    # default
+send_tag_all          = "Super+Shift+0"    # default — make focused sticky
+
+# Toggle view: add/remove this tag from the output's visible mask (union view).
+toggle_view_tag_1     = "Super+Ctrl+1"     # default
+toggle_view_tag_2     = "Super+Ctrl+2"     # default
+toggle_view_tag_3     = "Super+Ctrl+3"     # default
+toggle_view_tag_4     = "Super+Ctrl+4"     # default
+toggle_view_tag_5     = "Super+Ctrl+5"     # default
+toggle_view_tag_6     = "Super+Ctrl+6"     # default
+toggle_view_tag_7     = "Super+Ctrl+7"     # default
+toggle_view_tag_8     = "Super+Ctrl+8"     # default
+toggle_view_tag_9     = "Super+Ctrl+9"     # default
+
+# Toggle window tag: add/remove this tag from the focused window's mask
+# (a window can live on multiple tags simultaneously).
+toggle_window_tag_1   = "Super+Shift+Ctrl+1"   # default
+toggle_window_tag_2   = "Super+Shift+Ctrl+2"   # default
+toggle_window_tag_3   = "Super+Shift+Ctrl+3"   # default
+toggle_window_tag_4   = "Super+Shift+Ctrl+4"   # default
+toggle_window_tag_5   = "Super+Shift+Ctrl+5"   # default
+toggle_window_tag_6   = "Super+Shift+Ctrl+6"   # default
+toggle_window_tag_7   = "Super+Shift+Ctrl+7"   # default
+toggle_window_tag_8   = "Super+Shift+Ctrl+8"   # default
+toggle_window_tag_9   = "Super+Shift+Ctrl+9"   # default
+
+# Back-and-forth between the current and previous tagset on this output.
+swap_last_tagset      = "Super+grave"      # default (the ` key)
+
+# --- Window state ops (Phase B1e) ---
+# Fullscreen / Maximize / Floating / Minimize / Scratchpad. Each toggle
+# remembers the prior state so a second press round-trips. Only ONE
+# fullscreen window per output is allowed (toggling another auto-restores
+# the prior). Minimized windows are excluded from layout + focus cycle.
+toggle_fullscreen     = "Super+Shift+F"        # default
+toggle_maximize       = "Super+Shift+M"        # default
+toggle_floating       = "Super+Shift+Space"    # default
+toggle_minimize       = "Super+N"              # default — hide from layout
+unminimize_last       = "Super+Shift+N"        # default — restore most-recent minimized
+toggle_scratchpad     = "Super+Backslash"      # default — summon/dismiss "default" pad
+send_to_scratchpad    = "Super+Shift+Backslash" # default — park focused in "default" pad
+
+# Examples of the array form and explicit unbind:
+#   cycle_focus = ["Super+Tab", "Alt+Tab"]
+#   close_focused = []                      # disables Super+Q entirely
+
+
+# -----------------------------------------------------------------------------
+# Free-form custom chords. Key = chord string, value = action verb.
+#
+# Action verbs:
+#   spawn:<argv>            — fork/exec via /bin/sh -c (detached)
+#   set_layout:<id-or-slot> — switch active layout; <id> ∈ tile|monocle|grid|
+#                             float|scrolling, or a [layout.slots] name
+#   builtin:<action_name>   — invoke a built-in by canonical name
+# -----------------------------------------------------------------------------
+[keybinds.custom]
+"Super+E"            = "spawn:nemo"
+"Super+Shift+S"      = "spawn:grim -g \"$(slurp)\" - | wl-copy"
+"Super+B"            = "spawn:zen-browser"
+"XF86AudioRaiseVolume"  = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+"XF86AudioLowerVolume"  = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+"XF86AudioMute"         = "spawn:wpctl set-mute   @DEFAULT_AUDIO_SINK@ toggle"
+"XF86AudioMicMute"      = "spawn:wpctl set-mute   @DEFAULT_AUDIO_SOURCE@ toggle"
+"XF86MonBrightnessUp"   = "spawn:brightnessctl set +5%"
+"XF86MonBrightnessDown" = "spawn:brightnessctl set 5%-"
+"XF86AudioPlay"         = "spawn:playerctl play-pause"
+"XF86AudioNext"         = "spawn:playerctl next"
+"XF86AudioPrev"         = "spawn:playerctl previous"
+
+# Direct layout switches (bypassing slots).
+# NOTE: Super+1..5 are reserved by the tag bindings above (view_tag_1..5).
+# Use the [layout.slots]-based set_layout_primary/secondary/... built-ins
+# (Super+T/F/M/G) instead, or pick non-conflicting chords. Examples:
+# "Super+Alt+T"        = "set_layout:tile"
+# "Super+Alt+S"        = "set_layout:scrolling"
+# "Super+Alt+M"        = "set_layout:monocle"
+# "Super+Alt+G"        = "set_layout:grid"
+# "Super+Alt+F"        = "set_layout:float"
+
+# Re-route a built-in onto an extra chord:
+"Alt+F4"             = "builtin:close_focused"
+
+# Named scratchpads use a "verb:arg" suffix on the builtin: form. The
+# pad name is created on first use; multiple pads can coexist.
+# "Super+grave"        = "builtin:toggle_scratchpad_named:term"
+# "Super+Shift+grave"  = "builtin:send_to_scratchpad_named:term"
+
+
+# -----------------------------------------------------------------------------
+# Window-state behaviour (Phase B1e). Controls fullscreen / maximize / float /
+# minimize / scratchpad semantics. All keys are optional — defaults shown.
+# -----------------------------------------------------------------------------
+[state]
+# When toggling fullscreen, also hide layer-shell layers above 'bottom'
+# (the bar / notifications). NOTE: the layer-shell hide path is wired in
+# Phase B1f; until then this flag is parsed but has no effect.
+fullscreen_hides_bar = true
+
+# Maximize ignores layer-shell exclusive zones (i.e. covers the bar).
+# false → cover usable_area only (the conventional behaviour).
+maximize_full_output = false
+
+
+# -----------------------------------------------------------------------------
+# Scratchpad geometry + spawn-on-empty policy.
+# -----------------------------------------------------------------------------
+[scratchpad]
+# Behaviour when toggle_scratchpad fires on an empty pad:
+#   "manual" — no-op; the pad is filled only via send_to_scratchpad
+#   "spawn"  — run the configured [scratchpad.spawn.<name>] command and
+#              claim its first window on manage_start
+on_empty    = "manual"
+
+# Geometry of a summoned scratchpad window, as fractions of the output's
+# usable area. Anchor is one of: "center", "top", "bottom".
+width_frac  = 0.6
+height_frac = 0.5
+anchor      = "center"
+
+# pad-name → shell command. Run when on_empty = "spawn" and the pad is empty.
+[scratchpad.spawn]
+# term  = "ghostty --class=aqueous-scratch-term"
+# notes = "obsidian"
+
+
+[[exec]]
+name    = "wayle"
+command = "wayle panel start"
+when    = "startup"          # "startup" (default) | "reload" | "always"
+once    = true               # don't relaunch on --reload
+restart = true              # respawn (with backoff) on non-zero exit
+log     = "/tmp/wayle.log"
+
+
+#[[exec]]
+#name    = "xwayland-satellite"
+#command = "xwayland-satellite :0"
+#when    = "startup"
+#restart = true
+#log     = "/tmp/xwayland-satellite.log"
+#env     = { DISPLAY = ":0" }
+
+#[[exec]]
+#name    = "ghostty"
+#command = "ghostty"
+#when    = "startup"
+
+
+[rules]
+# Optional. Absolute path or ~-prefixed. Overrides the XDG search above.
+path = "~/.config/aqueous/rules.toml"
