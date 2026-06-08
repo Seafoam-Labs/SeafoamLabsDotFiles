@@ -28,7 +28,7 @@ right = [
     "network",
     "microphone",
     "volume",
-    "power",
+    "dashboard",
 ]
 
 [styling]
@@ -50,11 +50,16 @@ blue = "#7ecae5"
 icon-show = false
 label-show = false
 
+[modules.cava]
+stereo = true
+style = "wave"
+
 [modules.power]
 right-click = "systemctl poweroff"
 middle-click = "systemctl reboot"
 
 [modules.weather]
+location = "Chattanooga"
 units = "imperial"
 format = "{{ temp }}{{ temp_unit }} {{ condition }}"
 
