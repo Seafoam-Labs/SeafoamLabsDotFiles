@@ -63,6 +63,9 @@ location = "Chattanooga"
 units = "imperial"
 format = "{{ temp }}{{ temp_unit }} {{ condition }}"
 
+[modules.world-clock]
+format = "{{ tz('Europe/Athens', '%H:%M %Z') }}"
+
 [wallpaper]
 cycling-same-image = true
 
