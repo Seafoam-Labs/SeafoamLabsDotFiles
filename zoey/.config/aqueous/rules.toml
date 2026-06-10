@@ -31,6 +31,24 @@ scale = 1.0
 fullscreen = false
 ignore_struts = true
 
+[[window]]
+app_id = "steam_app_3583210"
+layout = "game-mode"
+anchor="center"
+size = "3840x2160"
+scale = 1.0
+fullscreen = false
+ignore_struts = true
+
+[[window]]
+app_id = "steam_app_1217060"
+layout = "game-mode"
+anchor="center"
+size = "3840x2160"
+scale = 1.0
+fullscreen = false
+ignore_struts = true
+
 # 2) Some builds report the Source 2 engine name
 #[[window]]
 #app_id     = "steam_app_570"
