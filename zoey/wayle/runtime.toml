@@ -1,0 +1,81 @@
+[general]
+font-sans = "MonoLisa script"
+font-mono = "MonoLisa script"
+
+[bar]
+scale = 0.75
+bg = "transparent"
+
+[[bar.layout]]
+monitor = "*"
+show = true
+left = [
+    "media",
+    "world-clock",
+    "weather",
+    "clock",
+    { name = "System", modules = [
+    "cpu",
+    "ram",
+    "netstat",
+    "storage",
+] },
+    "ext-workspaces",
+]
+center = ["cava"]
+right = [
+    "systray",
+    "bluetooth",
+    "network",
+    "microphone",
+    "volume",
+    "notifications",
+    "dashboard",
+]
+
+[styling]
+scale = 1.0
+rounding = "md"
+
+[styling.palette]
+bg = "#000000"
+surface = "#000000"
+elevated = "#111827"
+fg = "#9ca3af"
+fg-muted = "#9ca3af"
+primary = "#8b68cf"
+red = "#f472b6"
+yellow = "#facc15"
+green = "#2dd4a8"
+blue = "#7ecae5"
+
+[modules.battery]
+icon-show = false
+label-show = false
+
+[modules.cava]
+stereo = true
+style = "wave"
+
+[modules.niri-workspaces]
+min-workspace-count = 1
+
+[modules.power]
+right-click = "systemctl poweroff"
+middle-click = "systemctl reboot"
+
+[modules.weather]
+location = "Chattanooga"
+units = "imperial"
+format = "{{ temp }}{{ temp_unit }} {{ condition }}"
+
+[modules.world-clock]
+format = "{{ tz('Europe/Athens', '%H:%M %Z') }}"
+
+[wallpaper]
+cycling-same-image = true
+
+[[wallpaper.monitors]]
+name = ""
+fit-mode = "fill"
+wallpaper = "/home/zoey/Pictures/aishot-4455.jpg"
