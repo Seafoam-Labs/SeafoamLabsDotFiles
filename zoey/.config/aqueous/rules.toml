@@ -8,9 +8,9 @@
 # ---------------------------------------------------------------------------------------------
 
 [game_mode]
-remainder_layout = "grid"
+remainder_layout = "rows"
 gaps_inner       = 8
-fallback_layout  = "grid"
+fallback_layout  = "tile"
 
 [[window]]
 app_id     = "dota2"

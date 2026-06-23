@@ -45,8 +45,46 @@ gaps_inner = 8
 
 [layout.options.scrolling]
 # PaperWM-style knobs consumed by ScrollingLayout via Extra:
-column_fraction = "0.5"     # each column = 50% of output width
+column_width = "0.5"     # each column = 50% of output width
 center_focused  = "true"    # auto-pan so focused column is centred
 
 [layout.options.float]
 # Floating engine has no scalar knobs today; reserved for future use.
+
+
+
+[[workspace]]
+workspace = 1
+layout	= "game-mode"
+
+[[workspace]]
+workspace = 2
+layout = "tile"
+
+[[workspace]]
+workspace = 3
+layout = "tile"
+
+[[workspace]]
+workspace = 4
+layout = "tile"
+
+[[workspace]]
+workspace = 5
+layout = "grid"
+
+[[workspace]]
+workspace = 6
+layout = "grid"
+
+[[workspace]]
+workspace = 7
+layout = "grid"
+
+[[workspace]]
+workspace = 8
+layout = "grid"
+
+[[workspace]]
+workspace = 9
+layout = "grid"

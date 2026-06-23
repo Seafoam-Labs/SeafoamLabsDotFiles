@@ -81,7 +81,7 @@ screenshot	      = "PrintScreen"
 toggle_start_menu     = "Super+Space"      # default
 spawn_terminal        = "Super+Return"     # default
 close_focused         = "Super+Q"          # default
-cycle_focus           = "Super+Tab"        # default
+#cycle_focus           = "Super+Tab"        # default
 lock_
 
 # --- Directional focus (works in tile/grid; scrolling = prev/next column) ---
@@ -149,7 +149,7 @@ move_to_workspace_9      = "Super+Shift+9"
 
 focus_workspace_up       = "Super+Bracketleft"
 focus_workspace_down     = "Super+Bracketright"
-focus_previous_workspace = "Super+grave"
+focus_previous_workspace = "Super+Shift+grave"
 move_to_workspace_up     = "Super+Shift+Bracketleft"
 move_to_workspace_down   = "Super+Shift+Bracketright"
 
@@ -165,6 +165,11 @@ toggle_minimize       = "Super+N"              # default — hide from layout
 unminimize_last       = "Super+Shift+N"        # default — restore most-recent minimized
 toggle_scratchpad     = "Super+Backslash"      # default — summon/dismiss "default" pad
 send_to_scratchpad    = "Super+Shift+Backslash" # default — park focused in "default" pad
+
+# --- Pointer ---
+# Hold-to-untrap: while this chord is held down any active pointer constraint
+# (mouse "trap" from games etc.) is released; on release the trap re-engages.
+untrap_pointer        = "Super+grave"          # no compiled-in default
 
 # Examples of the array form and explicit unbind:
 #   cycle_focus = ["Super+Tab", "Alt+Tab"]
@@ -182,7 +187,7 @@ send_to_scratchpad    = "Super+Shift+Backslash" # default — park focused in "d
 # -----------------------------------------------------------------------------
 [keybinds.custom]
 "Super+E"            = "spawn:nemo"
-"Super+Shift+S"      = "spawn:grim -g \"$(slurp)\" - | wl-copy -t image/png"
+"Super+Shift+S"      = "spawn:noctalia msg screenshot-region"
 "Super+B"            = "spawn:zen-browser"
 "XF86AudioRaiseVolume"  = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
 "XF86AudioLowerVolume"  = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
