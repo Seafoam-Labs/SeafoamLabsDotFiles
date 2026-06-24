@@ -44,9 +44,14 @@ master_ratio = 0.6
 gaps_inner = 8
 
 [layout.options.scrolling]
-# PaperWM-style knobs consumed by ScrollingLayout via Extra:
-column_width = "0.5"     # each column = 50% of output width
-center_focused  = "true"    # auto-pan so focused column is centred
+column_width = 0.55
+center_focused = true
+follow_new_windows = true
+allow_overscroll = true
+snap_to_columns = false
+focus_follows_mouse_delay_ms = 150
+scroll_navigation_throttle_ms = 150
+#focus_follows_mouse_max_scroll_amount = "10%"
 
 [layout.options.float]
 # Floating engine has no scalar knobs today; reserved for future use.
@@ -87,4 +92,4 @@ layout = "grid"
 
 [[workspace]]
 workspace = 9
-layout = "grid"
+layout = "scrolling"
